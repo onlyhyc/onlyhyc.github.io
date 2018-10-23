@@ -19,7 +19,7 @@ NickName: 'xiaogege'
 webtitle: 'https://http://onlyhyc.github.io'
 bio: '致力于架构师的前端新人'
 about: true
-aboutyou: 'your introduction'
+aboutyou: ''
 portraits: '/assets/profile.jpeg' # your portraits image file path
 
 # SNS
