@@ -1,23 +1,23 @@
 # Site settings 配置站点
-title: 'your awesome title'
-description: 'your web description'
-keywords: 'your web keywords, another keywords'
-url: 'https://abc.github.io' # your host
+title: '华亚超的个人博客'
+description: 'Why so serious?'
+keywords: 'Jekyll,华亚超,个人博客,前端,javascript,Windows'
+url: 'https://http://onlyhyc.github.io' # your host
 
 # nav 中文字符空格：&emsp;
 nav: # 最佳体验 六个标签 且最好每个标签不超过4中文字
   首页: '/'
   标签: '/tags.html'
-  时间线: '/timeline.html'
+  # 时间线: '/timeline.html'
   关于博主: '/about.html'
   友情链接: '/friendLink.html'
 
 # 博主
 author: true
-name: 'your awesome name'
-NickName: 'your awesome nickname'
-webtitle: 'your awesome webtitle'
-bio: 'your awesome bio'
+name: '华亚超'
+NickName: 'xiaogege'
+webtitle: 'https://http://onlyhyc.github.io'
+bio: '致力于架构师的前端新人'
 about: true
 aboutyou: 'your introduction'
 portraits: '/assets/profile.jpeg' # your portraits image file path
