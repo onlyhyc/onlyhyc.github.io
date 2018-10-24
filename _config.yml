@@ -10,7 +10,8 @@ nav: # 最佳体验 六个标签 且最好每个标签不超过4中文字
   # 标签: '/tags.html'
   # 时间线: '/timeline.html'
   关于博主: '/about.html'
-  # 友情链接: '/friendLink.html'
+  个人简历: '/resume-simple/index.html'
+
 
 # 博主
 author: true
@@ -19,7 +20,12 @@ NickName: 'xiaogege'
 webtitle: 'hyc'
 bio: '致力于成为架构师的前端'
 about: true
-aboutyou: ''
+aboutyou: '&emsp;&emsp;本人毕业于 [ <a href="http://www2017.tyut.edu.cn/">太原理工大学</a> ]，一个毕业于计算机专业，却没有成为程序员的原实施运维工程师，平时爱好学习新的知识，游泳跑步，宅在家学习编程。在博客顶部的个人简历中看到我的项目，这个博客主题也是项目之一，基于ruby+jekyll用 html + css + js 从零写的小项目。当然，要十分感谢一些开源项目，比如 <a href="https://daneden.github.io/animate.css/">css动画库</a> 、<a href="http://www.bootcdn.cn/social-share.js/">
+        Bootstrap 中文网开源项目免费 项目 social-share.js</a>  、<a href="http://www.iconfont.cn/">阿里云图标库</a> 、<a href="https://fonts.google.com">谷歌字体库</a> ,以及第三方
+        评论系统 [<a href="https://livere.com/">来必力livere</a>]，还有 <a href="https://tongji.baidu.com/web/welcome/login?castk=LTE%3D">百度统计</a> 等等。。。<br>
+        &emsp;&emsp;当然还要感谢，jekyll主题开发者 <a href="https://github.com/xukimseven">xukimseven</a>
+        是我原先用的博客主题，在使用他与修改他的过程中让我接触与熟悉了 jekyll 这个前端小工具，也促使我写了我自己的主题。'
+
 portraits: '/assets/profile.jpeg' # your portraits image file path
 
 # SNS
@@ -67,7 +73,7 @@ disqus: false
 disqus_url: '' # https://abc.disqus.com/embed.js
 # 来必力评论
 livere: true
-livere_uid: 'MTAyMC8zNDI2OS8xMDgwNg==' # MTAyMC8zNDI2OS8xMDgwNg==
+livere_uid: 'MTAyMC80MDQ4NC8xNzAxMQ==' # MTAyMC80MDQ4NC8xNzAxMQ==
 # Gitment评论 OAuth Application
 Gitment: false
 Gitment_owner: ''  # github用户名
@@ -77,7 +83,7 @@ client_secret: ''  # 注册 OAuth Application 后获得的 client_secret
 
 # Share : weibo, qq, wechat, tencent, douban, qzone, linkedin, diandian, facebook, twitter, google
 social-share: true
-social-share-items: ['qq', 'wechat', 'weibo', 'twitter', 'facebook']
+social-share-items: ['qq', 'wechat', 'weibo']
 
 # 百度统计 在baidu-url里填写自己相关的url代码
 baidu: true
