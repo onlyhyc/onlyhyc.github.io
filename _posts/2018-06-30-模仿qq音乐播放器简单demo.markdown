@@ -1,0 +1,165 @@
+---
+layout: post
+title:  "简单版音乐播放器"
+date:   2018-06-30 09:34:56
+tags: Jquery 音乐播放器
+color: rgb(255,90,90)
+cover: '../assets/musicplay.png'
+subtitle: 基于jquery的音乐播放器'
+---
+
+这是首个完整意义上的前端项目，没有实现与后端的连接。
+
+歌曲信息由jquery内Ajax请求本地Json数据
+
+![](../assets/jsondata.png)
+
+### 具体实现功能
+
+- [歌曲播放与删除](#歌曲播放与删除)
+- [歌曲封面，歌词与播放时同步](#歌曲封面，歌词与播放时同步)
+- [下导航栏与歌曲导航栏功能同步](#下导航栏与歌曲导航栏功能同步)
+- [下导航栏歌曲进度条拖动控制](#下导航栏歌曲进度条拖动控制)
+- [实现音量控制](#实现音量控制)
+
+#### 歌曲播放与删除
+
+获取当前点击元素的下标，利用audio.play实现播放
+
+```html
+playMusic: function (index, music) {
+            // 判断是否是同一首音乐
+            if(this.currentIndex == index){
+                // 同一首音乐
+                if(this.audio.paused){
+                    this.audio.play();
+                }else{
+                    this.audio.pause();
+                }
+            }else {
+                // 不是同一首
+                this.$audio.attr("src", music.link_url);
+                this.audio.play();
+                this.currentIndex = index;
+            }
+        }
+```
+
+事件委托给父级元素，并判断是否是正在播放的状态，从列表中移除当前下标
+
+```javascript
+changeMusic: function(index) {
+		//删除对应数据
+		this.musicList.splice(index,1);
+		// 判断当前删除的是否是正在播放音乐的前面的音乐
+		if(index < this.currentIndex)
+    {
+      this.currentIndex = this.currentIndex - 1;
+    }
+	}
+```
+
+#### 歌曲封面，歌词与播放时同步
+
+通过从musiclist.json中提取到的数据对数据进行处理
+
+```javascript
+getPlayerList()
+	function getPlayerList(){
+		$.ajax({
+			url:"source/musiclist.json",
+			dateType:"json",
+			success:function(data){
+				player.musicList = data;
+				var $musicList = $('.list ul');
+				$.each(data, function(index,ele) {
+					var $item = createMusicItem(index,ele);
+					$musicList.append($item);
+				});
+				initMusicInfo(data[0]);
+				initMusicLyric(data[0]);
+			},
+			error:function(e){
+				console.log(e);
+			}
+		});
+	}
+```
+
+#### 下导航栏与歌曲导航栏功能同步
+
+```javascript
+
+playMusic: function (index, music) {
+            // 判断是否是同一首音乐
+            if(this.currentIndex == index){
+                // 同一首音乐
+                if(this.audio.paused){
+                    this.audio.play();
+                }else{
+                    this.audio.pause();
+                }
+            }else {
+                // 不是同一首
+                this.$audio.attr("src", music.link_url);
+                this.audio.play();
+                this.currentIndex = index;
+            }
+        },
+		preIndex: function (){
+			var index = this.currentIndex-1;
+			if(index<0){
+				index = this.musicList.length-1;
+			}
+			return index;
+		},
+		nextIndex: function(){
+			var index = this.currentIndex+1;
+			if(index>this.musicList.length-1){
+				index = 0;
+			}
+			return index;
+		},
+		changeMusic: function(index){
+			//删除对应数据
+			this.musicList.splice(index,1);
+			// 判断当前删除的是否是正在播放音乐的前面的音乐
+			if(index < this.currentIndex){
+                this.currentIndex = this.currentIndex - 1;
+            }
+		}
+  ```
+
+#### 下导航栏歌曲进度条拖动控制
+
+
+  因为播放进度条跟音量控制进度条都需要progress，所以抽一个方法出来处理
+
+  ```html
+  progressClick: function (callBack) {
+            var $this = this; // 此时此刻的this是progress
+            // 监听背景的点击
+            this.$progressBar.click(function (event) {
+                // 获取背景距离窗口默认的位置
+                var normalLeft = $(this).offset().left;
+                // 获取点击的位置距离窗口的位置
+                var eventLeft = event.pageX;
+                // 设置前景的宽度
+                $this.$progressLine.css("width", eventLeft - normalLeft);
+                $this.$progressDot.css("left", eventLeft - normalLeft);
+                // 计算进度条的比例
+                var value = (eventLeft - normalLeft) / $(this).width();
+                callBack(value);
+            });
+        }
+  ```
+
+  具体代码参见本人的博客 [日常练习库下的qq音乐播放器](https://github.com/onlyhyc/daily-practice/tree/master/qq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8)
+
+####  实现音量控制
+
+  基本是调用progress方法实现
+
+  ------
+
+  这是本人第一篇正式博客，主要总结jquery实现播放器，不是所有的都做得尽善尽美，但我也付出了劳动，不喜勿喷。
