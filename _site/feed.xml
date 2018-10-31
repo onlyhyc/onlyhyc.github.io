@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-26T13:32:07+08:00</updated><id>http://localhost:4000/</id><title type="html">华亚超的个人博客</title><subtitle>Why so serious?</subtitle><author><name>true</name></author><entry><title type="html">简单版音乐播放器</title><link href="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html" rel="alternate" type="text/html" title="简单版音乐播放器" /><published>2018-06-30T17:34:56+08:00</published><updated>2018-06-30T17:34:56+08:00</updated><id>http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo</id><content type="html" xml:base="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html">&lt;p&gt;这是首个完整意义上的前端项目，没有实现与后端的连接。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-31T22:39:06+08:00</updated><id>http://localhost:4000/</id><title type="html">华亚超的个人博客</title><subtitle>Why so serious?</subtitle><author><name>true</name></author><entry><title type="html">Vue-用户管理系统</title><link href="http://localhost:4000/2018/07/12/vue-customer.html" rel="alternate" type="text/html" title="Vue-用户管理系统" /><published>2018-07-12T01:06:44+08:00</published><updated>2018-07-12T01:06:44+08:00</updated><id>http://localhost:4000/2018/07/12/vue-customer</id><content type="html" xml:base="http://localhost:4000/2018/07/12/vue-customer.html">&lt;h2 id=&quot;最初的想法&quot;&gt;最初的想法&lt;/h2&gt;
+&lt;p&gt;在学习Vue的时候，就想着做一个demo来做简单的用户管理，实现CURD的所有操作，因为Node.js还学的不够扎实，就想着先用本地数据库来做，就用到了Jsonserver来搭建&lt;/p&gt;
+
+&lt;h3 id=&quot;界面部分&quot;&gt;界面部分&lt;/h3&gt;
+
+&lt;h4 id=&quot;主页界面&quot;&gt;主页界面&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;http://phcdkzm5f.bkt.clouddn.com/vuecustomer.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;主页界面中的search是利用ES6自带的filter方法对数据库进行筛选，一个难点，想了很多办法，最后还是根据一些博客，采用了filter&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;filterBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;customer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;添加用户界面&quot;&gt;添加用户界面&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;http://phcdkzm5f.bkt.clouddn.com/customer1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;用bootstrap框架搭建的界面，整体界面上比较简洁，主要是为了实现功能&lt;/p&gt;
+
+&lt;h4 id=&quot;详情页面&quot;&gt;详情页面&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://phcdkzm5f.bkt.clouddn.com/customer3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个页面就是来实现查询，修改以及删除的功能，根据生产的id在数据库内查询当前点击的内容，在点击编辑时同样通过id获取内容，填充表格，修改提交至数据库，删除亦然&lt;/p&gt;
+
+&lt;p&gt;这是我对一个小项目的总结，欢迎大家指点，也欢迎大家访问我的&lt;a href=&quot;https://github.com/onlyhyc&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>true</name></author><category term="Vue" /><category term="demo" /><category term="bootstrap" /><summary type="html">最初的想法 在学习Vue的时候，就想着做一个demo来做简单的用户管理，实现CURD的所有操作，因为Node.js还学的不够扎实，就想着先用本地数据库来做，就用到了Jsonserver来搭建</summary></entry><entry><title type="html">简单版音乐播放器</title><link href="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html" rel="alternate" type="text/html" title="简单版音乐播放器" /><published>2018-06-30T17:34:56+08:00</published><updated>2018-06-30T17:34:56+08:00</updated><id>http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo</id><content type="html" xml:base="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html">&lt;p&gt;这是首个完整意义上的前端项目，没有实现与后端的连接。&lt;/p&gt;
 
 &lt;p&gt;歌曲信息由jquery内Ajax请求本地Json数据&lt;/p&gt;
 
