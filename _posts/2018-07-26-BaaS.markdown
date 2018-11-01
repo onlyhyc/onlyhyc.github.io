@@ -1,0 +1,50 @@
+---
+layout: post
+title:  "连接BaaS数据库"
+date:   2018-07-26 17:06:44
+tags: BaaS LeanCloud
+color: rgb(154,133,255)
+cover: '../assets/leancloud1.png'
+subtitle: '前端开发时遇到API的问题，使用Baas数据库时的想法'
+---
+在做前端开发的时候，需要从后端请求数据，在前期Node.js还不够扎实的情况，自然需要用到BaaS服务，服务端业务依靠BaaS服务来支持。
+
+##### 国外：
+
+Firebase(是真的好用啊！！可惜要翻墙啊！！)
+
+##### 国内：
+
+野狗(听说因为资金问题无法要倒闭了，新用户无法注册，跟firebase一样好用啊！！)
+Bmob
+LeanCloud
+
+介于以上原因，所有在Bmob跟LeanCloud中选择了LeanCloud
+官网地址是：https://leancloud.cn
+
+前面注册什么的就不赘述了，大家肯定都会的，就直接说说使用，查看API文档，发现只有对原生JS的支持文档，如果用到了其他框架，并没有详细的说明，只能自己摸索了，首先按照连接firebase的方式用postman尝试请求数据,控制台给的提示是认证失败，于是查文档以及百度，得出问题是需要AppID与AppKey，找到解决方案：首先引用leancloud的CDN，然后在发送请求时在请求头中加入
+
+'X-LC-Id': 'Your Application App ID',
+
+'X-LC-Key': 'Your Application App Key',
+
+以下是我的抽象出来的使用axios时设置的请求头
+
+```javascript
+const instance = axios.create({
+  baseURL: 'https://glgkkyip.api.lncld.net/1.1/classes/YourClass',
+  headers: {
+    'X-LC-Id': 'Your Application App ID',
+    'X-LC-Key': 'Your Application App Key',
+    'Content-Type': 'application/json'
+  }
+});
+```
+
+加入请求头之后就可以按照连接firebase或者wilddog数据库的方式来连接leancloud了。
+
+现在有了数据库，有了API，那么我们就可以专心做前端开发了，不用再考虑后端的事情了。
+
+以上，不喜勿喷！
+
+---

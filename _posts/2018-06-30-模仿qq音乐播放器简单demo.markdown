@@ -12,7 +12,6 @@ subtitle: 基于jquery的音乐播放器'
 
 歌曲信息由jquery内Ajax请求本地Json数据
 
-![](../assets/jsondata.png)
 
 ### 具体实现功能
 

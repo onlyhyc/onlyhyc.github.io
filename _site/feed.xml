@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T19:42:20+08:00</updated><id>http://localhost:4000/</id><title type="html">华亚超的个人博客</title><subtitle>Why so serious?</subtitle><author><name>true</name></author><entry><title type="html">Vue-用户管理系统</title><link href="http://localhost:4000/2018/07/12/vue-customer.html" rel="alternate" type="text/html" title="Vue-用户管理系统" /><published>2018-07-12T01:06:44+08:00</published><updated>2018-07-12T01:06:44+08:00</updated><id>http://localhost:4000/2018/07/12/vue-customer</id><content type="html" xml:base="http://localhost:4000/2018/07/12/vue-customer.html">&lt;h2 id=&quot;最初的想法&quot;&gt;最初的想法&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-01T23:00:36+08:00</updated><id>http://localhost:4000/</id><title type="html">华亚超的个人博客</title><subtitle>Why so serious?</subtitle><author><name>true</name></author><entry><title type="html">连接BaaS数据库</title><link href="http://localhost:4000/2018/07/27/BaaS.html" rel="alternate" type="text/html" title="连接BaaS数据库" /><published>2018-07-27T01:06:44+08:00</published><updated>2018-07-27T01:06:44+08:00</updated><id>http://localhost:4000/2018/07/27/BaaS</id><content type="html" xml:base="http://localhost:4000/2018/07/27/BaaS.html">&lt;p&gt;在做前端开发的时候，需要从后端请求数据，在前期Node.js还不够扎实的情况，自然需要用到BaaS服务，服务端业务依靠BaaS服务来支持。&lt;/p&gt;
+
+&lt;h5 id=&quot;国外&quot;&gt;国外：&lt;/h5&gt;
+
+&lt;p&gt;Firebase(是真的好用啊！！可惜要翻墙啊！！)&lt;/p&gt;
+
+&lt;h5 id=&quot;国内&quot;&gt;国内：&lt;/h5&gt;
+
+&lt;p&gt;野狗(听说因为资金问题无法要倒闭了，新用户无法注册，跟firebase一样好用啊！！)
+Bmob
+LeanCloud&lt;/p&gt;
+
+&lt;p&gt;介于以上原因，所有在Bmob跟LeanCloud中选择了LeanCloud
+官网地址是：https://leancloud.cn&lt;/p&gt;
+
+&lt;p&gt;前面注册什么的就不赘述了，大家肯定都会的，就直接说说使用，查看API文档，发现只有对原生JS的支持文档，如果用到了其他框架，并没有详细的说明，只能自己摸索了，首先按照连接firebase的方式用postman尝试请求数据,控制台给的提示是认证失败，于是查文档以及百度，得出问题是需要AppID与AppKey，找到解决方案：首先引用leancloud的CDN，然后在发送请求时在请求头中加入&lt;/p&gt;
+
+&lt;p&gt;‘X-LC-Id’: ‘Your Application App ID’,&lt;/p&gt;
+
+&lt;p&gt;‘X-LC-Key’: ‘Your Application App Key’,&lt;/p&gt;
+
+&lt;p&gt;以下是我的抽象出来的使用axios时设置的请求头&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;axios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;baseURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://glgkkyip.api.lncld.net/1.1/classes/YourClass'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'X-LC-Id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Your Application App ID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'X-LC-Key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Your Application App Key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;加入请求头之后就可以按照连接firebase或者wilddog数据库的方式来连接leancloud了。&lt;/p&gt;
+
+&lt;p&gt;现在有了数据库，有了API，那么我们就可以专心做前端开发了，不用再考虑后端的事情了。&lt;/p&gt;
+
+&lt;p&gt;以上，不喜勿喷！&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>true</name></author><category term="BaaS" /><category term="LeanCloud" /><summary type="html">在做前端开发的时候，需要从后端请求数据，在前期Node.js还不够扎实的情况，自然需要用到BaaS服务，服务端业务依靠BaaS服务来支持。</summary></entry><entry><title type="html">Vue-用户管理系统</title><link href="http://localhost:4000/2018/07/12/vue-customer.html" rel="alternate" type="text/html" title="Vue-用户管理系统" /><published>2018-07-12T01:06:44+08:00</published><updated>2018-07-12T01:06:44+08:00</updated><id>http://localhost:4000/2018/07/12/vue-customer</id><content type="html" xml:base="http://localhost:4000/2018/07/12/vue-customer.html">&lt;h2 id=&quot;最初的想法&quot;&gt;最初的想法&lt;/h2&gt;
 &lt;p&gt;在学习Vue的时候，就想着做一个demo来做简单的用户管理，实现CURD的所有操作，因为Node.js还学的不够扎实，就想着先用本地数据库来做，就用到了Jsonserver来搭建&lt;/p&gt;
 
 &lt;h3 id=&quot;界面部分&quot;&gt;界面部分&lt;/h3&gt;
@@ -31,8 +70,6 @@
 &lt;hr /&gt;</content><author><name>true</name></author><category term="Vue" /><category term="demo" /><category term="bootstrap" /><summary type="html">最初的想法 在学习Vue的时候，就想着做一个demo来做简单的用户管理，实现CURD的所有操作，因为Node.js还学的不够扎实，就想着先用本地数据库来做，就用到了Jsonserver来搭建</summary></entry><entry><title type="html">简单版音乐播放器</title><link href="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html" rel="alternate" type="text/html" title="简单版音乐播放器" /><published>2018-06-30T17:34:56+08:00</published><updated>2018-06-30T17:34:56+08:00</updated><id>http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo</id><content type="html" xml:base="http://localhost:4000/2018/06/30/%E6%A8%A1%E4%BB%BFqq%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E7%AE%80%E5%8D%95demo.html">&lt;p&gt;这是首个完整意义上的前端项目，没有实现与后端的连接。&lt;/p&gt;
 
 &lt;p&gt;歌曲信息由jquery内Ajax请求本地Json数据&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../assets/jsondata.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;具体实现功能&quot;&gt;具体实现功能&lt;/h3&gt;
 
